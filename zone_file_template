@@ -1,0 +1,14 @@
+@       IN      SOA     $DOMAIN  $MAIL (
+                                    $SERIAL;
+                                    $REFRESH;
+                                    $RETRY;
+                                    $EXPIRY;
+                                    $MTTL);
+;
+@       IN      NS      $NS
+$NS			IN      A       $IP
+$WWW    IN      CNAME   $IPWWW
+$EXTRA1
+$EXTRA2
+$EXTRA3
+
