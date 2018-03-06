@@ -1,3 +1,4 @@
+$TTL $MTTL
 @       IN      SOA     $DOMAIN  $MAIL (
                                     $SERIAL;
                                     $REFRESH;
