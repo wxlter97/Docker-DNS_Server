@@ -1,6 +1,29 @@
 #!/bin/bash
+
+#vars
+DOMAIN="pupusa.com"
+MAIL="rc14005.ues.edu.sv"
+SERIAL="1"
+REFRESH="3H"
+RETRY="15M"
+EXPIRY="1W"
+MTTL="1D"
+NS="dns1"
+IP=$(hostname -I)
+WWW="www"
+IPWWW="dns1"
+EXTRA1=""
+EXTRA2=""
+EXTRA3=""
+TYPE="master"
+TTL="\$TTL"
+
 echo "Starting DNS Server..."
+wget --output-document=/etc/bind/db.$DOMAIN https://raw.githubusercontent.com/wxlter97/Docker-DNS_Server/master/zone_file_template
+eval "echo \"$(cat /etc/bind/db.$DOMAIN)\"" > /etc/bind/db.$DOMAIN
+echo -e "zone \"$DOMAIN\"{ \n \t type $TYPE; \n \t file \"/etc/bind/db.$DOMAIN\"; \n };" >> /etc/bind/named.conf.local
+named-checkzone -i full $DOMAIN /etc/bind/db.$DOMAIN
+named-checkconf -z
 /etc/init.d/bind9 start
 /etc/init.d/bind9 status
 tcpdump -i eth0 udp port 53
-
