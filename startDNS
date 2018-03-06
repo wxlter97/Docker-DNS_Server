@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Starting DNS Server..."
+/etc/init.d/bind9 start
+/etc/init.d/bind9 status
+tcpdump -i eth0 udp port 53
+
