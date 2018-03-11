@@ -8,4 +8,4 @@ $TTL $MTTL
 ;
 @       IN      NS      $NS
 $NS	IN      A       $IP
-$WWW    IN      CNAME   $IPWWW
+$WWW    IN      A   $IPWWW
